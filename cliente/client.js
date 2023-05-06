@@ -1,8 +1,17 @@
+
 const { read } = require('fs');
 const net = require('net');
 const readline = require('readline-sync');
+
 //Constantes para obtener los valores de los botones oprimidos en la calculadora
 
+const numberButtons = document.querySelectorAll('[data-number]')
+const operationButtons = document.querySelectorAll('[data-number]')
+const equalsButton = document.querySelectorAll('[data-equals]')
+const deleteButton = document.querySelectorAll('[data-delete]')
+const allClearButton = document.querySelectorAll('[data-all-clear]')
+const previousOperandTextElement = document.querySelectorAll('[data-previous-operand]')
+const actualOperandTextElement= document.querySelectorAll('[data-actual-operand]')
 
 
 const net = require('net');//Se requiere la constante net para la conexión
@@ -32,6 +41,7 @@ client.on('error',(err)=>{
     console.log(err.message)
 })
 
+
 function sendLine(){
     var line = readline.question('\nEscriba algo\t')
     if (line == "0"){
@@ -40,6 +50,4 @@ function sendLine(){
         client.write(line)
     }
 }
-
-
 

@@ -5,7 +5,8 @@ const server = net.createServer();
 
 server.on('connection', ()=>{
     Socket.on('data', (data)=>{//Acá voy a agregar otros datos de ingreso que van a ser los números a calcular
-        console.log('mensaje recibido desde el cliente:' + data);
+        console.log('\nmensaje recibido desde el cliente:' + data);
+        Socket.write('\nrecibido')//Dato enviado por la conexión
     })
 
     Socket.on('Close', ()=>{

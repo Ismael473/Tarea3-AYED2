@@ -3,17 +3,17 @@ const net = require('net');
 
 const server = net.createServer();
 
-server.on('connection', ()=>{
-    Socket.on('data', (data)=>{//Acá voy a agregar otros datos de ingreso que van a ser los números a calcular
-        console.log('\nmensaje recibido desde el cliente:' + data);
-        Socket.write('\nrecibido')//Dato enviado por la conexión
+server.on('connection', (socket)=>{
+    socket.on('data', (data)=>{//Acá voy a agregar otros datos de ingreso que van a ser los números a calcular
+        console.log('\nmensaje recibido desde el cliente: ' + data);
+        socket.write('\nrecibido')//Dato enviado por la conexión
     })
 
-    Socket.on('Close', ()=>{
+    socket.on('Close', ()=>{
         console.log('Comunicación finalizada')
     })
 
-    Socket.on('error', (err)=>{
+    socket.on('error', (err)=>{
         console.log(err.message)
     })
 })
